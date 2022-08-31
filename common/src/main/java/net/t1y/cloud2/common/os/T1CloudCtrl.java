@@ -4,6 +4,8 @@ public interface T1CloudCtrl{
     void openKotlinGlobalScope();
     void closeKotlinGlobalScope();
     void openDebug(DebugCtrl debugCtrl);
+    void setHttpCtrl(HttpCtrl httpCtrl);
     void closeDebug();
     void close();
+    HttpCtrl getHttpCtrl();
 }

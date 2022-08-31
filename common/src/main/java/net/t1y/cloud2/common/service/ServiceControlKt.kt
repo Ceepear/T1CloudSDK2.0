@@ -1,7 +1,7 @@
 package net.t1y.cloud2.common.service;
-
-class ServiceControlKt {
+abstract class ServiceControlKt:ServiceControl {
     fun with(func:()->KeyService){
-        func()
+        val key = func()
+        this.with(key)
     }
 }
