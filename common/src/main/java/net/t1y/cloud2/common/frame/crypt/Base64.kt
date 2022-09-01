@@ -6,6 +6,7 @@ import net.t1y.cloud2.common.service.T1Service
 import java.util.Base64
 
 class Base64 {
+    companion object{
     fun encode(bytes: ByteArray?): String? {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             Base64.getEncoder().encodeToString(bytes)
@@ -16,4 +17,5 @@ class Base64 {
             Base64.getDecoder().decode(s)
         } else android.util.Base64.decode(s, android.util.Base64.DEFAULT)
     }
+        }
 }

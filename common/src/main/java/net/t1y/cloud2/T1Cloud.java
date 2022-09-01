@@ -51,6 +51,11 @@ public final class T1Cloud implements T1CloudCtrl {
         return httpCtrl;
     }
 
+    @Override
+    public Object getCloudService(String string) {
+        return this.framework.getService(string);
+    }
+
     public void closeDebug(){
         this._debugCtrl = null;
     }

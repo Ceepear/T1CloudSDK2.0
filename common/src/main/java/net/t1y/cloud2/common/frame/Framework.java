@@ -56,4 +56,17 @@ public class Framework {
         }
         this.serviceSparseArray = null;
     }
+
+    public Object getService(String string) {
+        if(string.startsWith("service:index:")){
+            String cls = string.replace("service:index:","");
+            for(int t=0;t<serviceSparseArray.size();t++){
+               T1Service service = this.serviceSparseArray.get(t);
+               if(service.getClass().getName().contains(cls)){
+                   return cls.hashCode();
+               }
+            }
+        }
+        return null;
+    }
 }

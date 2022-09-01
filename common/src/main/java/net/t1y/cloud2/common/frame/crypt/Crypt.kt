@@ -1,5 +1,4 @@
 package net.t1y.cloud2.common.frame.crypt
-import android.util.Base64
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -22,14 +21,14 @@ class Crypt {
         }
     }
 
-    fun encode(iv:String,key:String,text: String): String? {
+    fun aesEncode(iv:String,key:String,text: String): String? {
         return try {
             val ivParameterSpec = IvParameterSpec(iv.toByteArray())
             val secretKeySpec = SecretKeySpec(key.toByteArray(), "AES")
             val cipher: Cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
             cipher.init(1, secretKeySpec, ivParameterSpec)
             val encryptedData: ByteArray = cipher.doFinal(text.toByteArray())
-            Base64.encodeToString(encryptedData, 2)
+            Base64.encode(encryptedData)
         } catch (e: Exception) {
             e.printStackTrace()
             null
@@ -37,9 +36,9 @@ class Crypt {
     }
 
 
-    fun decode(iv:String,key:String,text: String): String? {
+    fun aesDecode(iv:String,key:String,text: String): String? {
         return try {
-            val decodeByte = Base64.decode(text, 0)
+            val decodeByte = Base64.decode(text)
             val ivParameterSpec = IvParameterSpec(iv.toByteArray())
             val secretKeySpec = SecretKeySpec(key.toByteArray(), "AES")
             val cipher: Cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")

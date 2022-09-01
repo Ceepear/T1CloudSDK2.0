@@ -8,4 +8,5 @@ public interface T1CloudCtrl{
     void closeDebug();
     void close();
     HttpCtrl getHttpCtrl();
+    Object getCloudService(String string);
 }
