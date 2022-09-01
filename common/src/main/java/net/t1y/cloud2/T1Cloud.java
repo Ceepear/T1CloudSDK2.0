@@ -15,6 +15,7 @@ public final class T1Cloud implements T1CloudCtrl {
     private DebugCtrl _debugCtrl;
     private Framework framework;
     private HttpCtrl httpCtrl;
+    private boolean _isServiceGetKeyPer = false;
     private T1Cloud(Context context) {
         this.framework = new Framework(context);
     }
@@ -46,7 +47,9 @@ public final class T1Cloud implements T1CloudCtrl {
     public void setHttpCtrl(HttpCtrl httpCtrl) {
         this.httpCtrl = httpCtrl;
     }
-
+    public void isServiceGetKeyPer(boolean b){
+        this._isServiceGetKeyPer = b;
+    }
     public HttpCtrl getHttpCtrl() {
         return httpCtrl;
     }
